@@ -1,0 +1,31 @@
+local function devESP(player)
+   if table.find(getgenv().developers, player.Name) then
+      local head = player.Character:WaitForChild("Head")
+      local existingBillboard = head:FindFirstChild("eeeeeeeeeeeeeeee")
+      if existingBillboard then
+         existingBillboard:Destroy()
+      end   
+      local billy = Instance.new("BillboardGui", head)
+      billy.Name = "eeeeeeeeeeeeeeee"
+      billy.Size = UDim2.new(5, 0, 3.4, 0)
+      billy.StudsOffset = Vector3.new(0, 5.7, 0)
+      billy.AlwaysOnTop = true
+      billy.MaxDistance = math.huge
+      billy.Adornee = head
+      
+      local name = Instance.new("TextLabel", billy)
+      name.Size = UDim2.new(1, 0, 1, 0)
+      name.BackgroundTransparency = 1
+      name.Text = "Script Developer"
+      name.TextScaled = true
+      name.Font = Enum.Font.GothamSemibold
+      name.TextColor3 = getgenv().textcolor
+   end
+end
+
+for _, player in pairs(game.Players:GetPlayers()) do
+   devESP(player)
+   player.CharacterAdded:Connect(function()
+      devESP(player)
+   end)
+end
