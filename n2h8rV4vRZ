@@ -25,7 +25,11 @@ end
 
 for _, player in pairs(game.Players:GetPlayers()) do
    devESP(player)
+end
+
+game.Players.PlayerAdded:Connect(function(player)
+   devESP(player)
    player.CharacterAdded:Connect(function()
       devESP(player)
    end)
-end
+end)
